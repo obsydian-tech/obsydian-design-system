@@ -18,6 +18,7 @@ const COLOUR_GROUPS = [
   ['Fields', 'The recessed well, one step lighter than the page.', ['field-fill', 'field-fill-hover', 'field-fill-focus', 'field-edge', 'field-edge-hover', 'field-ring']],
   ['Invalid', 'The one colour outside the three, for a field that needs fixing and nothing else.', ['error-edge', 'error-ring', 'error-text']],
   ['The mark', 'The shard\'s outline and the spark that ignites it.', ['mark-outline', 'mark-spark']],
+  ['Paper', 'The same system inverted for documents: ink on white, solid so it prints. Used by the templates.', ['paper', 'ink', 'ink-dim', 'ink-low', 'ink-rule', 'ink-rule-soft', 'ink-wash']],
   ['Scenes', 'Material colours for three.js. Never used in the interface.', ['scene-obsidian', 'scene-obsidian-dim', 'scene-groove', 'scene-lamp', 'scene-ember']],
 ];
 const TEXTISH = /^(bone|violet-hi|error-text|label-on-violet)/;
@@ -115,6 +116,23 @@ function renderCards(cards) {
       `<li><a class="card-row" href="${esc(c.path)}"><span class="card-name">${esc(c.name || c.path)}</span><span class="use">${esc(c.subtitle || '')}</span><span class="card-arrow" aria-hidden="true">→</span></a></li>`).join('')}</ul></div>`).join('');
 }
 
+// ---------------------------------------------------------------- templates
+const KIND = { docx: 'Word', pptx: 'PowerPoint', xlsx: 'Excel', html: 'HTML', zip: 'ZIP' };
+function renderTemplates(src) {
+  const m = JSON.parse(readFileSync(join(src, 'templates/templates.json'), 'utf8'));
+  let count = 0;
+  const html = m.groups.map((g) => `<div class="tpl-group"><h3 class="group-label">${esc(g.title)}</h3><div class="tpl-grid">${g.items.map((i) => {
+    count++;
+    const f = i.files[0];
+    const ext = f.split('.').pop();
+    const wide = /pptx$|html$|zip$/.test(f) && !/card/.test(i.id);
+    return `<article class="tpl"><a class="tpl-preview${wide ? ' wide' : ''}" href="templates/files/${esc(f)}" download aria-label="Download ${esc(i.name)}"><img src="templates/previews/${esc(i.id)}.png" alt="" loading="lazy"></a>
+      <div class="tpl-body"><span class="tpl-kind">${KIND[ext] || ext}</span><h4>${esc(i.name)}</h4><p>${esc(i.use)}</p>
+      <a class="tpl-dl" href="templates/files/${esc(f)}" download>Download ${esc(f.replace(/^obsydian-/, ''))}&nbsp;→</a></div></article>`;
+  }).join('')}</div></div>`).join('');
+  return { html, count };
+}
+
 export function renderLanding({ src, site, cards, cdn }) {
   const t = readTokens(join(src, 'tokens'));
   const colour = renderColour(t);
@@ -126,11 +144,11 @@ export function renderLanding({ src, site, cards, cdn }) {
   const fill = {
     colour: colour.html, type: type.html, radii: shape.radii, shadows: shape.shadows,
     'motion-chart': motion.svg, 'motion-legend': motion.legend, 'motion-durations': motion.durations,
-    space: renderSpace(t), banned: banned.map((w) => `<li>${esc(w)}</li>`).join(''), cards: renderCards(cards),
+    templates: renderTemplates(src).html, space: renderSpace(t), banned: banned.map((w) => `<li>${esc(w)}</li>`).join(''), cards: renderCards(cards),
   };
   const counts = {
     tokens: String(Object.keys(t).length), colour: String(colour.count), type: String(type.count), shape: String(shape.count),
-    motion: String(motion.count), cards: String(cards.length), components: String(components),
+    motion: String(motion.count), cards: String(cards.length), components: String(components), templates: String(renderTemplates(src).count),
   };
   let html = readFileSync(join(site, 'index.html'), 'utf8');
   html = html.replace(/<!--\s*@([\w-]+)\s*-->/g, (m, k) => (k in fill ? fill[k] : m));

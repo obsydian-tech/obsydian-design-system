@@ -160,6 +160,38 @@ table.tokens td:last-child{width:34%}
 @media (max-width:980px){.screens{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:820px){.screens{grid-template-columns:1fr}}
 
+
+/* templates */
+.tpl-start{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,.9fr);gap:0 32px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:24px 0;margin-bottom:24px}
+.tpl-start .n{display:block;font:var(--type-eyebrow);color:var(--violet);margin-bottom:8px}
+.tpl-start p{font:var(--type-meta);color:var(--bone-dim)}
+.tpl-start b{color:var(--bone);font-weight:500}
+.tpl-start a:not(.tpl-all-btn){color:var(--bone);text-decoration:none;border-bottom:1px solid var(--hairline-strong)}
+.tpl-start a:not(.tpl-all-btn):hover{color:var(--violet);border-color:var(--violet)}
+.tpl-all{display:flex;flex-direction:column;gap:10px;align-items:flex-start;justify-content:center}
+.tpl-all span{font:var(--type-caption);color:var(--bone-low)}
+.tpl-all-btn{display:inline-flex;align-items:center;gap:8px;font:var(--type-button);font-weight:600;color:var(--label-on-violet);text-decoration:none;padding:14px 26px;border-radius:var(--radius-button);border:var(--frame-w) solid var(--violet-frame);background:var(--fill-primary);box-shadow:var(--shadow-primary);text-shadow:var(--shadow-label);white-space:nowrap;transition:box-shadow var(--dur-base) var(--ease-out),background var(--dur-base) var(--ease-out)}
+.tpl-all-btn:hover{background:var(--fill-primary-hover);box-shadow:var(--shadow-primary-hover)}
+@media (max-width:980px){.tpl-start{grid-template-columns:1fr 1fr;gap:20px 32px}}
+@media (max-width:820px){.tpl-start{grid-template-columns:1fr}}
+.tpl-group{margin-top:16px}
+.tpl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media (max-width:1100px){.tpl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:820px){.tpl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.tpl-grid{grid-template-columns:1fr}}
+.tpl{display:flex;flex-direction:column;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);transition:background var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out)}
+.tpl:hover{background:var(--hover-wash);box-shadow:inset var(--select-bar) 0 0 var(--violet)}
+.tpl-preview{display:grid;place-items:center;aspect-ratio:4/3.4;padding:24px 24px 0;overflow:hidden;background:var(--surface-1);border-bottom:1px solid var(--hairline)}
+.tpl-preview img{width:72%;height:auto;align-self:end;box-shadow:0 12px 40px rgba(0,0,0,.5);transition:transform var(--dur-nav) var(--ease-out)}
+.tpl-preview.wide img{width:100%;align-self:center;margin-bottom:24px}
+.tpl:hover .tpl-preview img{transform:translateY(-4px)}
+.tpl-body{display:flex;flex-direction:column;gap:6px;padding:var(--cell-pad);flex:1}
+.tpl-kind{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--violet)}
+.tpl h4{font:var(--type-title-3);font-size:20px;letter-spacing:-0.02em;color:var(--bone);margin:0}
+.tpl p{font:var(--type-meta);color:var(--bone-dim);flex:1;margin:0}
+.tpl-dl{margin-top:10px;font:var(--type-action);letter-spacing:var(--type-action-tracking);text-transform:uppercase;color:var(--bone);text-decoration:none}
+.tpl-dl:hover{color:var(--violet)}
+
 /* decisions and drift */
 .timeline li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px 32px;padding:22px 0;border-top:1px solid var(--hairline)}
 .timeline time{font:var(--type-meta);color:var(--bone-low);font-variant-numeric:tabular-nums}
@@ -199,7 +231,7 @@ table.tokens td:last-child{width:34%}
   <div class="bar-inner">
     <a class="brand" href="#overview"><img src="assets/obsydian-mark.svg" alt=""><span>Obsydian</span><em>Design system</em></a>
     <nav class="tabs" aria-label="Sections">
-      <a class="tab" href="#overview" aria-current="true">Overview</a><a class="tab" href="#rules">Rules</a><a class="tab" href="#brand">Brand</a><a class="tab" href="#colour">Colour</a><a class="tab" href="#type">Type</a><a class="tab" href="#shape">Shape</a><a class="tab" href="#motion">Motion</a><a class="tab" href="#space">Space</a><a class="tab" href="#voice">Voice</a><a class="tab" href="#components">Components</a><a class="tab" href="#screens">Screens</a><a class="tab" href="#decisions">Decisions</a><a class="tab" href="#drift">Drift</a><a class="tab" href="#cards">Cards</a>
+      <a class="tab" href="#overview" aria-current="true">Overview</a><a class="tab" href="#rules">Rules</a><a class="tab" href="#brand">Brand</a><a class="tab" href="#colour">Colour</a><a class="tab" href="#type">Type</a><a class="tab" href="#shape">Shape</a><a class="tab" href="#motion">Motion</a><a class="tab" href="#space">Space</a><a class="tab" href="#voice">Voice</a><a class="tab" href="#components">Components</a><a class="tab" href="#screens">Screens</a><a class="tab" href="#templates">Templates</a><a class="tab" href="#decisions">Decisions</a><a class="tab" href="#drift">Drift</a><a class="tab" href="#cards">Cards</a>
     </nav>
     <a class="bar-cta" href="#engineers">For engineers</a>
   </div>
@@ -350,9 +382,23 @@ table.tokens td:last-child{width:34%}
   </div>
 </section>
 
+<section id="templates" class="s" aria-labelledby="templates-title">
+  <div class="wrap">
+    <div class="eyebrow"><i></i><span>11 Templates</span></div>
+    <div class="s-head"><h2 id="templates-title">Ready to send,<br><span>already on brand.</span></h2><p>{{count.templates}} templates for working with clients: invoices, quotes, proposals, the deck, letterhead, cards and the signature. Open one, replace the [bracketed] text, export a PDF.</p></div>
+    <div class="tpl-start">
+      <div><span class="n">01</span><p><b>Install General Sans first.</b> It is free. <a href="https://www.fontshare.com/fonts/general-sans" target="_blank" rel="noopener noreferrer">Download it from Fontshare</a> and install every file in the OTF folder, or Word and PowerPoint will substitute another face.</p></div>
+      <div><span class="n">02</span><p><b>Save a copy, then fill it in.</b> Replace every [bracketed] placeholder; search for "[" before you send.</p></div>
+      <div><span class="n">03</span><p><b>Send a PDF.</b> File, Export, PDF. Clients get PDFs, never the editable file.</p></div>
+      <div class="tpl-all"><a class="tpl-all-btn" href="templates/files/obsydian-templates-all.zip" download>Download everything&nbsp;→</a><span>All templates and the logo pack, one zip</span></div>
+    </div>
+    <!-- @templates -->
+  </div>
+</section>
+
 <section id="decisions" class="s" aria-labelledby="decisions-title">
   <div class="wrap">
-    <div class="eyebrow"><i></i><span>11 Decisions</span></div>
+    <div class="eyebrow"><i></i><span>12 Decisions</span></div>
     <div class="s-head"><h2 id="decisions-title">What changed<br><span>since the first version.</span></h2><p>The June system described a site that has since moved on. These are the decisions this version records, newest first, with the website change that made each one.</p></div>
     <ol class="timeline">
       <li><time datetime="2026-10-06">6 Oct 2026</time><div><b>Every click shows it is working</b><p>A 2px route bar for navigations slower than 150ms, and a spinner on the pressed control until it lands. Site PRs #10 and #11.</p></div></li>
@@ -368,7 +414,7 @@ table.tokens td:last-child{width:34%}
 
 <section id="drift" class="s" aria-labelledby="drift-title">
   <div class="wrap">
-    <div class="eyebrow"><i></i><span>12 Drift</span></div>
+    <div class="eyebrow"><i></i><span>13 Drift</span></div>
     <div class="s-head"><h2 id="drift-title">Where the site<br><span>disagrees with itself.</span></h2><p>Where the live site had several versions of one thing, this system picked one. These are the places the site still differs, for the website to fix; the system is the reference. The full list with file paths is DRIFT.md in this repo.</p></div>
     <div class="drift">
       <div><h3>Colour</h3><ul>
@@ -401,7 +447,7 @@ table.tokens td:last-child{width:34%}
 
 <section id="cards" class="s" aria-labelledby="cards-title">
   <div class="wrap">
-    <div class="eyebrow"><i></i><span>13 Cards</span></div>
+    <div class="eyebrow"><i></i><span>14 Cards</span></div>
     <div class="s-head"><h2 id="cards-title">Every specimen,<br><span>one page each.</span></h2><p>{{count.cards}} cards: foundations, components and screens, each a page of its own that renders from the tokens and components above.</p></div>
     <!-- @cards -->
   </div>
