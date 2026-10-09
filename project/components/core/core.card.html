@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="760x620" subtitle="The official shard at rest and assembling, the lockup at three sizes, type roles, Lucide for function only, the splash" name="Core · Mark, logo, type, icons, splash" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Core · Mark, logo, type, icons, splash</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { ShardMark, Logo, Text, textStyle, Icon, Splash, Button } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [k,setK]=React.useState(0);
+  return <div className="col">
+    <div className="row">{L('mark')}<ShardMark size={22}/><ShardMark size={32}/><ShardMark size={56}/><ShardMark key={'a'+k} size={56} animated large/><Button variant="ghost" onClick={()=>setK(k+1)}>Replay</Button></div>
+    <div className="row">{L('lockup')}<Logo/><Logo size="pill"/><Logo size="footer"/><Logo markOnly/></div>
+    <div className="row">{L('type')}<Text role="title-2" tone="primary">Platforms that compound.</Text><Text role="lede" tone="dim">We design, build and operate.</Text><Text role="eyebrow" tone="low">01 What we do</Text></div>
+    <div className="row">{L('icons')}{['mic','mic-off','x','eye','eye-off','log-out','check'].map(i=><span key={i} style={{color:'var(--bone-dim)'}}><Icon name={i}/></span>)}<span style={textStyle('meta','var(--bone-low)')}>function only, stroke 1.5</span></div>
+    <div className="frame" style={{height:300}}><Splash key={k} contained hold playKey={k}/></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

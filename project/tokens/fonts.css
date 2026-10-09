@@ -1,0 +1,3 @@
+/* General Sans from Fontshare (free for commercial use under the ITF Free Font Licence), the same
+   faces the website loads. Söhne is the intended face; swap it in here when the licensed files exist. */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");

@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="760x420" subtitle="The one spinner, calm notices with a violet bar, a callout for what was carried over, a toast that confirms" name="Feedback · Spinner, notice, callout, toast" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Feedback · Spinner, notice, callout, toast</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { Spinner, Notice, Callout, Toast, Button, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [k,setK]=React.useState(0);
+  return <div className="col" style={{maxWidth:640}}>
+    <div className="row">{L('spinner')}<span style={{color:'var(--bone)'}}><Spinner/></span><span style={{color:'var(--bone-dim)'}}><Spinner size={12}/></span></div>
+    <Notice alert>The drafting engine could not complete that request. Try rephrasing, or try again shortly.</Notice>
+    <Notice counsel>Keep the first release to one market. The settlement rules differ enough between regions to double the payments work.</Notice>
+    <Callout label="Blueprint attached" title="Harvest Ledger">Your brief, architecture, delivery plan and schematic are pre-filled below. Edit anything before sending.</Callout>
+    <div className="frame" style={{height:110}}><Toast key={k} contained duration={0} title="Coming soon">The Obsydian iOS app is on its way. We will let you know the moment it lands.</Toast></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

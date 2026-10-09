@@ -1,0 +1,25 @@
+{
+  "about": "Every downloadable template. The landing page's Templates section is rendered from this file; scripts/templates/generate.mjs builds the files, previews and zips it names.",
+  "groups": [
+    { "title": "Money", "items": [
+      { "id": "obsydian-tax-invoice", "name": "Tax invoice", "use": "Bill a client. GST at 10%, bank details, 14-day terms.", "files": ["obsydian-tax-invoice.docx"] },
+      { "id": "obsydian-invoice-workbook", "name": "Invoice and receipt workbook", "use": "The invoice and its receipt in Excel. Type the lines; GST and totals calculate themselves.", "files": ["obsydian-invoice-workbook.xlsx"] },
+      { "id": "obsydian-receipt", "name": "Receipt", "use": "Confirm a payment against an invoice.", "files": ["obsydian-receipt.docx"] },
+      { "id": "obsydian-quote", "name": "Quote", "use": "Price a defined piece of work, with terms and a place to accept.", "files": ["obsydian-quote.docx"] }
+    ] },
+    { "title": "Winning and doing the work", "items": [
+      { "id": "obsydian-proposal", "name": "Proposal", "use": "Answer a brief: summary, approach, scope, timeline, team, investment, next steps. Dark cover.", "files": ["obsydian-proposal.docx"] },
+      { "id": "obsydian-client-deck", "name": "Client deck", "use": "Thirteen 16:9 slides on four branded masters: title, agenda, section, statement, process, figures, timeline, team, case study, investment, closing.", "files": ["obsydian-client-deck.pptx"] },
+      { "id": "obsydian-statement-of-work", "name": "Statement of work", "use": "Agree scope, deliverables, acceptance, fees and change control, with signatures. Dark cover.", "files": ["obsydian-statement-of-work.docx"] },
+      { "id": "obsydian-status-report", "name": "Status report", "use": "Report progress to a client: summary, workstreams, milestones, risks, decisions needed.", "files": ["obsydian-status-report.docx"] },
+      { "id": "obsydian-meeting-notes", "name": "Meeting agenda and notes", "use": "Run a client meeting and record decisions and actions.", "files": ["obsydian-meeting-notes.docx"] },
+      { "id": "obsydian-capability-statement", "name": "Capability statement", "use": "One page on who we are and what we deliver, for tenders and introductions.", "files": ["obsydian-capability-statement.docx"] }
+    ] },
+    { "title": "Identity", "items": [
+      { "id": "obsydian-letterhead", "name": "Letterhead", "use": "Any formal letter: the lockup, sender details, the legal line.", "files": ["obsydian-letterhead.docx"] },
+      { "id": "obsydian-business-card", "name": "Business card", "use": "90 by 55mm with 3mm bleed. Edit the back, export to PDF, send to the printer.", "files": ["obsydian-business-card.pptx"] },
+      { "id": "obsydian-email-signature", "name": "Email signature", "use": "One table that pastes into Gmail, Outlook and Apple Mail. Instructions inside.", "files": ["obsydian-email-signature.html"] },
+      { "id": "obsydian-logo-pack", "name": "Logo pack", "use": "The mark and lockup for dark and light grounds, as SVG and PNG.", "files": ["obsydian-logo-pack.zip"] }
+    ] }
+  ]
+}

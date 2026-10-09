@@ -1,0 +1,45 @@
+<!-- @dsCard group="Screens" viewport="1440x900" subtitle="The website's pages built only from the system: Home, Services, How we work, Stack, Contact and Blueprint, with their states" name="obsydiantechnologies.com" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Obsydian website kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../../components/_loader.js"></script>
+<style>html,body{margin:0;background:var(--obsydian)}#root{min-height:100vh}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadKit('../../components/', './', ['Content.jsx','Screens.jsx']).then((K) => {
+  const { SCREENS, Chip, textStyle } = K;
+  // Every screen and state opens directly with ?screen=<Screen>&state=<State>, for review at 1440 and 390.
+  const params = new URLSearchParams(location.search);
+  const STATE_PROPS = {
+    Stack: { 'Nothing open': {}, 'Layer open': { initial: 'data' } },
+    Contact: { Default: { state: 'default' }, Errors: { state: 'errors' }, Sending: { state: 'sending' }, Sent: { state: 'sent' } },
+    Blueprint: { Intake: { state: 'intake' }, Drafting: { state: 'drafting' }, Failed: { state: 'failed' } },
+  };
+  function App() {
+    const [screen, setScreen] = React.useState(SCREENS[params.get('screen')] ? params.get('screen') : 'Home');
+    const [state, setState] = React.useState(params.get('state') || SCREENS[screen].states[0]);
+    const [hidden, setHidden] = React.useState(params.get('chrome') === 'off');
+    const go = (s) => { setScreen(s); setState(SCREENS[s].states[0]); window.scrollTo(0, 0); };
+    const Screen = SCREENS[screen].component;
+    const props = (STATE_PROPS[screen] || {})[state] || {};
+    return <>
+      <Screen key={screen + state} {...props} />
+      {hidden ? null : (
+        <div role="toolbar" aria-label="Kit screens" style={{ position: 'fixed', left: 16, right: 16, bottom: 16, zIndex: 70, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, padding: 6, borderRadius: 'var(--radius-lg)', background: 'var(--glass)', backdropFilter: 'var(--blur-glass)', WebkitBackdropFilter: 'var(--blur-glass)', border: '1px solid var(--hairline)', boxShadow: 'var(--shadow-pill)' }}>
+            {Object.keys(SCREENS).map((s) => <Chip key={s} selected={s === screen} onClick={() => go(s)}>{SCREENS[s].label || s}</Chip>)}
+            {SCREENS[screen].states.length > 1 ? <span style={{ width: 1, background: 'var(--hairline-strong)', margin: '4px 4px' }} /> : null}
+            {SCREENS[screen].states.length > 1 ? SCREENS[screen].states.map((st) => <Chip key={st} selected={st === state} onClick={() => setState(st)}>{st}</Chip>) : null}
+            <Chip onClick={() => setHidden(true)}>Hide</Chip>
+          </div>
+        </div>
+      )}
+    </>;
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+});
+</script></body></html>

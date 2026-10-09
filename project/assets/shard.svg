@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  
+  <defs>
+    <linearGradient id="shardFace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1C1C20"></stop>
+      <stop offset="1" stop-color="#0A0A0B"></stop>
+    </linearGradient>
+    <linearGradient id="shardEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A53AFF"></stop>
+      <stop offset="0.5" stop-color="#9318FF"></stop>
+      <stop offset="1" stop-color="#7C0FE6"></stop>
+    </linearGradient>
+  </defs>
+  
+  <path d="M22 6 L46 14 L52 36 L40 56 L18 50 L10 28 Z" fill="url(#shardFace)" stroke="rgba(245,244,239,0.18)" stroke-width="1"></path>
+  
+  <path d="M46 14 L52 36 L40 56" stroke="url(#shardEdge)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  
+  <path d="M22 6 L28 30 L52 36" stroke="rgba(245,244,239,0.10)" stroke-width="1" fill="none"></path>
+  <path d="M28 30 L18 50" stroke="rgba(245,244,239,0.06)" stroke-width="1" fill="none"></path>
+</svg>

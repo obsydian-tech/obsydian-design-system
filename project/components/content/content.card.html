@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" viewport="900x1100" subtitle="Numbered steps and rows on hairlines, hairline cell grids with selectable tiles, logo cells, stat strips, tags, status pills, signal tiles" name="Content · Lists, grids, tags, signals" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Content · Lists, grids, tags, signals</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { Steps, NextSteps, CapabilityRows, StatStrip, CellGrid, Tile, LogoCell, Tag, StatusPill, SignalTile, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [sel,setSel]=React.useState('data');
+  const [sig,setSig]=React.useState(null);
+  const layers=[['foundation','01 Foundation','Cloud and infrastructure','Landing zones, networks, identity and the pipelines that ship to them.'],['data','02 Data','Data, CRM and analytics','Where records live, how they move, and what the business reads from them.'],['services','03 Services','Services, APIs and integrations','The contracts between systems, built to be versioned and observed.']];
+  return <div className="col">
+    <StatStrip stats={[{figure:'30+',label:'Years combined',body:'Our founding engineers bring over three decades of combined experience.'},{figure:'Multi-sector',label:'Industries served',body:'Finance, fintech, hospitality and regulated markets.'},{figure:'Proven impact',label:'Outcomes over outputs',body:'Every engagement is tracked to business results.'}]}/>
+    <CapabilityRows rows={[{name:'Enterprise Software Engineering',desc:'Platforms and internal systems built to last.',href:'#'},{name:'Cloud and Infrastructure Architecture',desc:'Foundations that are secure, observable and cost-aware.',href:'#'}]}/>
+    <Steps compact steps={[{title:'Discovery and strategy',body:'We learn the business before we design the system.'},{title:'Architecture and planning',body:'A plan you can hold us to, with the risks named.'}]}/>
+    <div style={{maxWidth:360}}><NextSteps items={['You tell us what you are building and where it stands today.','We reply within two business days, usually with a few questions.','If there is a fit, we set up a call to go deeper.']}/></div>
+    <CellGrid columns={3}>{layers.map(([id,l,t,s])=><Tile key={id} label={l} title={t} summary={s} action="Explore layer" selected={sel===id} onSelect={()=>setSel(id)}/>)}</CellGrid>
+    <CellGrid columns={4} narrow={2}><LogoCell name="AWS" href="#"/><LogoCell name="Anthropic" href="#"/><LogoCell name="LiveKit" href="#"/><LogoCell name="Stripe" href="#"/></CellGrid>
+    <div className="row"><Tag>Offline sync</Tag><Tag>Escrow payments</Tag><Tag shape="square">Identity</Tag><Tag shape="square">Observability</Tag><StatusPill>Ready</StatusPill><StatusPill live>Live</StatusPill></div>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(2,minmax(0,1fr))',border:'1px solid var(--hairline)',maxWidth:560}}>
+      <SignalTile label="Platform uptime" value="99.97%" delta="+0.02% 30d" values={[.62,.7,.66,.78,.74,.86,.9]} selected={sig==='u'} onSelect={()=>setSig('u')}/>
+      <SignalTile label="P95 latency" value="142ms" delta="−18ms 30d" values={[.8,.74,.7,.62,.58,.5,.46]} selected={sig==='l'} onSelect={()=>setSig('l')}/>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

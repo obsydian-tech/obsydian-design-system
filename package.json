@@ -1,0 +1,23 @@
+{
+  "name": "obsydian-design-system",
+  "private": true,
+  "type": "module",
+  "description": "Obsydian design system: tokens, rules, components, screens and the published site.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs",
+    "preview": "node scripts/build.mjs && node scripts/serve.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "templates": "node scripts/templates/generate.mjs"
+  },
+  "devDependencies": {
+    "docx": "^9.9.0",
+    "esbuild": "0.28.2",
+    "exceljs": "^4.4.0",
+    "playwright": "^1.64.0",
+    "pptxgenjs": "^3.12.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

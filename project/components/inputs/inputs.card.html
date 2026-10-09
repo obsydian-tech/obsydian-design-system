@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" viewport="760x700" subtitle="The recessed well: sentence-case labels, guiding placeholders, violet focus, the one red for invalid, the brief well with its key hint" name="Inputs · Fields" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Inputs · Fields</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { Field, KeyHint } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  return <div className="g2" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0 20px',maxWidth:720}}>
+    <Field label="Your name" placeholder="First and last name"/>
+    <Field label="Work email" placeholder="you@company.com" defaultValue="alex@" error="Enter a valid email."/>
+    <Field label="Company" optional placeholder="Where you work" style={{gridColumn:'1 / -1'}}/>
+    <Field label="About the project" multiline placeholder="What are you building or changing, where does it stand today, and is there a date that matters?" style={{gridColumn:'1 / -1'}}/>
+    <Field size="brief" label="What do you want built?" placeholder="Type a sentence or two: what it does, who uses it, and what matters most." keyHint={<KeyHint keys={['⌘','↵']}>to draft</KeyHint>} style={{gridColumn:'1 / -1'}}/>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>
