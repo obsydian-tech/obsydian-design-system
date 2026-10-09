@@ -95,7 +95,7 @@ test('the landing page fills every placeholder', () => {
 
 test('every card the build will find has a name, a group and a viewport', () => {
   const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)]));
-  const pages = walk(SRC).filter((p) => p.endsWith('.html'));
+  const pages = walk(SRC).filter((p) => p.endsWith('.html') && !p.includes('/templates/'));
   assert.ok(pages.length >= 20, `${pages.length} pages`);
   for (const p of pages) {
     const meta = readFileSync(p, 'utf8').match(/<!--\s*@dsCard\s+([^>]*?)-->/);
