@@ -133,7 +133,13 @@
         if (!e.isIntersecting) return;
         tabs.forEach((t) => t.removeAttribute('aria-current'));
         const t = byId.get(e.target.id);
-        if (t) { t.setAttribute('aria-current', 'true'); t.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+        if (t) {
+          t.setAttribute('aria-current', 'true');
+          // Scroll the tab strip sideways only. scrollIntoView would also scroll the page, fighting the reader.
+          const strip = t.parentElement;
+          const left = strip.scrollLeft + (t.getBoundingClientRect().left - strip.getBoundingClientRect().left) - (strip.clientWidth - t.offsetWidth) / 2;
+          strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+        }
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     byId.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
