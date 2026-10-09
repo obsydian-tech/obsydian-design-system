@@ -1,0 +1,41 @@
+:root {
+  /* ---- The page ---- */
+  --content-max: 1440px;                 /* the container, the nav at the top of the page, the footer */
+  --gutter: clamp(20px, 4vw, 40px);      /* the container's side padding; 20px below 820px */
+  --bp-phone: 820px;                     /* below this: one column, the nav becomes a card, the hamburger shows */
+  --bp-narrow: 980px;                    /* below this: two-column layouts stack */
+
+  /* ---- Sections breathe. Cramping kills the premium feel. ---- */
+  --section-pad: clamp(96px, 14vw, 200px);        /* a home section, top and bottom; 72px below 820px */
+  --section-pad-phone: 72px; /* a section below 820px */
+  --page-hero-pad-top: clamp(120px, 16vw, 200px); /* a page hero clears the nav */
+  --page-hero-pad-bottom: clamp(48px, 8vw, 96px); /* under a page hero */
+  --split-hero-pad-top: clamp(96px, 8vw, 128px);  /* a page hero beside a scene */
+  --split-hero-pad-bottom: clamp(40px, 6vw, 64px); /* under a split hero */
+  --body-pad: clamp(64px, 10vw, 120px);           /* the body of an inner page */
+  --band-pad-top: clamp(64px, 10vw, 120px);       /* the call-to-action band at the foot of an inner page */
+  --band-pad-bottom: clamp(96px, 12vw, 160px); /* under the band, before the footer */
+  --closing-pad: clamp(120px, 18vw, 240px);       /* the closing call on the home page; 80px below 820px */
+
+  /* ---- Rhythm inside a section ---- */
+  --eyebrow-gap: 16px;           /* between the rule and the eyebrow text */
+  --eyebrow-after: 56px;         /* below a section's eyebrow; 32px below 820px */
+  --eyebrow-after-hero: 40px;    /* below a page hero's eyebrow */
+  --heading-after: 72px;         /* below a section's h2; 48px below 820px */
+  --row-pad: 36px;               /* a hairline list row, top and bottom */
+  --step-pad: 40px;              /* a numbered step, top and bottom */
+  --cell-pad: clamp(24px, 3vw, 32px); /* a hairline cell */
+  --field-gap: 28px;             /* between fields */
+  --chip-gap: 10px; /* between chips in a row */
+  --cta-gap: 14px;               /* between buttons in a row */
+
+  /* ---- The nav ---- */
+  --announce-h: 44px;            /* the announcement bar, hidden once scrolled and below 820px */
+  --nav-pill-max: 920px;         /* the nav once scrolled */
+  --nav-scroll-at: 80px;         /* scroll depth that turns the nav into the pill */
+
+  /* ---- Measures ---- */
+  --measure-lede: 52ch; /* the longest a lede runs */
+  --measure-body: 68ch; /* the longest body copy runs */
+  --measure-headline: 16ch; /* the widest a page h1 runs */
+}

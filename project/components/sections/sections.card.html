@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" viewport="1200x1500" subtitle="The page hero (standard and split), the numbered section head, the call-to-action band and the closing call" name="Sections · Hero, head, band, closing" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sections · Hero, head, band, closing</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { PageHero, Section, SectionHead, Eyebrow, CtaBand, ClosingCall, AgentPromo, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  return <div style={{margin:-24}}>
+    <PageHero eyebrow="Services" lines={['Engineering depth.','Practical delivery.']} lede="Four practice areas. One team. We design, build and operate the systems your organisation depends on for growth." aside={<AgentPromo/>}/>
+    <Section><SectionHead number="03" eyebrow="Services" lines={['What we deliver','across the partnership.']}/></Section>
+    <PageHero variant="split" eyebrow="Architecture" lines={['The stack','we build on.']} lede="Four layers, from the cloud foundation to the products people use." intro="Open a layer to see what we build in it." stage={<div style={{position:'absolute',inset:0,border:'1px dashed var(--hairline-strong)',display:'grid',placeItems:'center'}}><Text role="label" tone="low">three.js stage</Text></div>}/>
+    <CtaBand prompt="Ready to scope an engagement?"/>
+    <ClosingCall/>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

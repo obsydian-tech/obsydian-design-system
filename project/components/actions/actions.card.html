@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" viewport="760x520" subtitle="Primary (one per viewport), ghost, link and nav; the busy state on every button; choice and starter chips" name="Actions · Buttons, chips, links" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Actions · Buttons, chips, links</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { Button, Chip, ChipGroup, InlineLink, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [busy,setBusy]=React.useState(false);
+  const [on,setOn]=React.useState(['A new platform']);
+  const t=(x)=>setOn(on.includes(x)?on.filter(y=>y!==x):[...on,x]);
+  const send=()=>{setBusy(true);setTimeout(()=>setBusy(false),2400);};
+  return <div className="col">
+    <div className="row">{L('primary')}<Button arrow>Start a project</Button><Button size="lg" arrow>Start a conversation</Button></div>
+    <div className="row">{L('busy')}<Button arrow busy={busy} busyLabel="Sending" onClick={send}>Send enquiry</Button><Button arrow busy>Start a project</Button><Button variant="ghost" busy busyLabel="Redrafting">Redraft</Button></div>
+    <div className="row">{L('quiet')}<Button variant="ghost">Back to home</Button><Button variant="link" arrow>View all platforms</Button><Button variant="nav">Start a project</Button><Button variant="nav" size="sm">Start a project</Button></div>
+    <div className="row" style={{alignItems:'flex-start'}}>{L('choice')}<ChipGroup legend="What can we help with?">{['A new platform','Modernising a system','Cloud and infrastructure','AI and automation','Not sure yet'].map(x=><Chip key={x} selected={on.includes(x)} onClick={()=>t(x)}>{x}</Chip>)}</ChipGroup></div>
+    <div className="row">{L('starter')}<ChipGroup label="Or start from an example"><Chip>Wholesale marketplace</Chip><Chip>Member portal with AI</Chip><Chip>Fleet operations</Chip></ChipGroup></div>
+    <div className="row">{L('inline')}<Text role="body" tone="dim">If it is urgent, write to <InlineLink href="mailto:partner@obsydiantechnologies.com">partner@obsydiantechnologies.com</InlineLink>.</Text></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

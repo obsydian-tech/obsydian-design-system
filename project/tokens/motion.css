@@ -1,0 +1,62 @@
+:root {
+  /* ---- Curves ---- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);     /* the default for everything that moves */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);    /* things that go and come back */
+  --ease-page: cubic-bezier(0.22, 1, 0.36, 1);    /* route changes, a scene fading up */
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);    /* the mark's outline tracing itself */
+  --ease-ignite: cubic-bezier(0.5, 0, 0.2, 1);    /* the violet edge igniting, the spark running down it */
+  --ease-sweep: cubic-bezier(0.45, 0, 0.55, 1);   /* a light passing across: the sheen, the splash loader */
+  --ease-progress: cubic-bezier(0.1, 0.7, 0.2, 1); /* the route bar creeping towards done */
+
+  /* ---- Durations ---- */
+  --dur-fast: 180ms;       /* chips, fields */
+  --dur-base: 250ms;       /* hovers, buttons, the arrow nudge */
+  --dur-nav: 350ms;        /* the nav changing state, rows indenting, selection */
+  --dur-reveal: 600ms;     /* a section rising into view */
+  --dur-spin: 700ms;       /* one turn of a busy spinner (1.6s under reduced motion) */
+  --dur-page: 450ms;       /* a route crossfade */
+  --dur-page-out: 420ms; /* the old page leaving, rising 14px */
+  --dur-page-in: 480ms; /* the new page arriving, from 18px below */
+  --dur-splash-exit: 720ms; /* the splash dissolving into the hero */
+  --dur-splash-hold: 2400ms; /* how long the splash holds before it goes (900ms reduced) */
+  --dur-scene-in: 1400ms;  /* a three.js canvas fading up */
+  --dur-scene-rise: 1800ms; /* and settling 12px */
+  --dur-progress-delay: 150ms; /* a route bar shows only for navigations slower than this */
+  --dur-grain: 8s;         /* one loop of the film grain */
+
+  /* ---- Distances ---- */
+  --rise-reveal: 20px;     /* a section rises this far as it reveals */
+  --rise-stagger: 18px;    /* each item in a staggered list */
+  --nudge-arrow: 3px;      /* a button's → on hover */
+}
+
+/* A busy button's spinner. */
+@keyframes obs-spin { to { transform: rotate(360deg); } }
+/* A section or item rising into view. */
+@keyframes obs-rise { from { opacity: 0; transform: translateY(var(--rise-stagger)); } to { opacity: 1; transform: none; } }
+/* The violet rule before an eyebrow drawing itself in. */
+@keyframes obs-rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* A live dot. */
+@keyframes obs-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+/* The scroll hint's line. */
+@keyframes obs-scroll-pulse { 0%, 100% { opacity: 0.5; transform: scaleY(0.7); } 50% { opacity: 1; transform: scaleY(1); } }
+/* The splash: outline traces, face fills, edge ignites behind a spark, a sheen passes. */
+@keyframes obs-mark-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes obs-mark-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes obs-mark-spark { 0% { stroke-dashoffset: 0.04; opacity: 1; } 80% { stroke-dashoffset: -0.96; opacity: 1; } 100% { stroke-dashoffset: -0.96; opacity: 0; } }
+@keyframes obs-mark-bloom { 0% { opacity: 0; } 40% { opacity: 0.55; } 100% { opacity: 0.3; } }
+@keyframes obs-mark-sheen { 0% { transform: translateX(6.6px); opacity: 0; } 25% { opacity: 1; } 75% { opacity: 1; } 100% { transform: translateX(34px); opacity: 0; } }
+/* The splash: the mark rises into place, the ember behind its edge flares and settles, the name lifts in. */
+@keyframes obs-mark-rise { from { opacity: 0; transform: translateY(6px) scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes obs-ember { 0% { opacity: 0; } 40% { opacity: 0.7; } 100% { opacity: 0.3; } }
+@keyframes obs-lift { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+/* The point of light that runs round the agent's frame. */
+@keyframes obs-comet { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -100; } }
+/* A logo band marching left; the content is rendered twice, so -50% wraps with no seam. */
+@keyframes obs-marquee { to { transform: translateX(-50%); } }
+/* Film grain drifting over the page. */
+@keyframes obs-grain { 0% { transform: translate(0, 0); } 10% { transform: translate(-2%, -3%); } 20% { transform: translate(-4%, 2%); } 30% { transform: translate(3%, -4%); } 40% { transform: translate(-2%, 5%); } 50% { transform: translate(-4%, 2%); } 60% { transform: translate(5%, 0); } 70% { transform: translate(0, 3%); } 80% { transform: translate(3%, 5%); } 90% { transform: translate(-3%, 0); } 100% { transform: translate(0, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --rise-reveal: 0px; --rise-stagger: 0px; --nudge-arrow: 0px; --dur-spin: 1600ms; }
+}

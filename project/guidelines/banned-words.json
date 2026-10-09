@@ -1,0 +1,5 @@
+{
+  "about": "Words Obsydian never says, from the website's brand voice rules. Read by scripts/lint.mjs, which fails the build if a component, a card, a kit screen or the landing page shows one. The landing page prints this list from here at build time. State what we do; don't oversell.",
+  "words": ["cutting-edge", "innovative", "transformative", "synergy", "empower", "unlock", "leverage", "solutions", "next-generation", "world-class"],
+  "allowIn": ["project/guidelines/voice.html"]
+}

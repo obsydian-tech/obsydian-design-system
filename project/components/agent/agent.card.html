@@ -1,0 +1,27 @@
+<!-- @dsCard group="Components" viewport="760x460" subtitle="The voice agent: idle, listening, thinking and speaking on its dot grid; the Talk to Obsydian promo" name="Agent · Visualiser and promo" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent · Visualiser and promo</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { AgentVisualizer, AgentPromo, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [lv,setLv]=React.useState(0.2);
+  React.useEffect(()=>{const t=setInterval(()=>setLv(0.05+Math.random()*0.3),180);return()=>clearInterval(t);},[]);
+  return <div className="row" style={{alignItems:'flex-start',gap:28}}>
+    {[['idle','Idle'],['listening','Listening'],['thinking','Thinking']].map(([s,l])=><div key={s} className="col" style={{gap:10,alignItems:'center'}}><AgentVisualizer state={s} size={150}/><Text role="label" tone="low">{l}</Text></div>)}
+    <div className="col" style={{gap:10,alignItems:'center'}}><AgentVisualizer state="speaking" level={lv} size={150} session/><Text role="label" tone="low">Speaking</Text></div>
+    <div style={{width:280}}><AgentPromo/></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>

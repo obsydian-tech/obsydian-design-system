@@ -1,0 +1,66 @@
+:root {
+  /* ---- Surfaces. Near-black does the lifting; each step is one shade up. ---- */
+  --obsydian: #0A0A0B;        /* the page, every section, the splash */
+  --surface-1: #131316;       /* lifted: the nav pill, menus, the auth panel, phase cells */
+  --surface-2: #1C1C20;       /* hover on a lifted surface */
+  --surface-3: #26262B;       /* pressed; the top stop of the mark's face */
+
+  /* ---- Bone, the warm off-white. Text and icons are bone at set strengths. ---- */
+  --bone: #F5F4EF;                        /* headlines, primary text, values */
+  --bone-dim: rgba(245, 244, 239, 0.62);  /* ledes, body copy, the second line of a section heading */
+  --bone-low: rgba(245, 244, 239, 0.40);  /* eyebrows, captions, meta, placeholders */
+  --bone-faint: rgba(245, 244, 239, 0.18); /* rests and dividers that should barely show */
+
+  /* ---- Hairlines. Structure is drawn, never boxed. ---- */
+  --hairline: rgba(245, 244, 239, 0.08);         /* section dividers, list rows, cell grids */
+  --hairline-strong: rgba(245, 244, 239, 0.14);  /* ghost buttons, chips, the nav pill CTA */
+  --hairline-hover: rgba(245, 244, 239, 0.22);   /* a hairline under the pointer */
+  --hover-wash: rgba(245, 244, 239, 0.02);       /* a hairline cell under the pointer */
+
+  /* ---- Violet, the one accent. ---- */
+  --violet: #9318FF;                       /* the primary action, rules, selected edges */
+  --violet-hover: #A53AFF;                 /* top stop of the primary button; its hover */
+  --violet-pressed: #7C0FE6;               /* bottom stop of the primary button */
+  --violet-hi: #B25CFF;                    /* violet on black where it must read as text: active labels, carets */
+  --violet-deep: #6A0BD0;                  /* globe arcs, deepest gradient stop */
+  --violet-glow: rgba(147, 24, 255, 0.32); /* the primary button's glow */
+  --violet-wash: rgba(147, 24, 255, 0.08); /* a selected chip's fill, the nav CTA hover */
+  --violet-ring: rgba(147, 24, 255, 0.22); /* the ring on a selected tile */
+  --violet-haze: rgba(147, 24, 255, 0.18); /* the radial glow behind the globe and the closing call */
+  --violet-chip: rgba(147, 24, 255, 0.60); /* a selected choice chip's edge */
+  --violet-line: rgba(147, 24, 255, 0.35); /* the edge of something live: a status pill, a muted mic, a notice */
+
+  /* ---- On violet ---- */
+  --label-on-violet: #FFFFFF;  /* the primary button's label */
+  --violet-frame: #150033;     /* the primary button's 3px frame */
+  --selection-ink: #1A0A2E;    /* text inside a violet text selection */
+
+  /* ---- Glass. Only the nav and its menu are glass. ---- */
+  --glass: rgba(19, 19, 22, 0.72);         /* the scrolled nav pill */
+  --glass-strong: rgba(19, 19, 22, 0.88);  /* the nav card on a phone */
+  --scrim: rgba(10, 10, 11, 0.72);         /* behind the mobile menu */
+
+  /* ---- Fields. A recessed well, one step lighter than the page. ---- */
+  --field-fill: #111114; /* a field at rest */
+  --field-fill-hover: #141417; /* a field under the pointer */
+  --field-fill-focus: #15151A; /* a field being typed in */
+  --field-edge: rgba(245, 244, 239, 0.16); /* a field's full hairline */
+  --field-edge-hover: rgba(245, 244, 239, 0.26); /* that hairline warming under the pointer */
+  --field-ring: rgba(147, 24, 255, 0.18);   /* the 4px focus ring */
+
+  /* ---- Invalid. The one colour outside the three, and only for a field that needs fixing. ---- */
+  --error-edge: rgba(245, 120, 120, 0.65);  /* an invalid field's edge */
+  --error-ring: rgba(245, 120, 120, 0.14);  /* an invalid field's focus ring */
+  --error-text: rgba(245, 180, 180, 0.90);  /* the sentence under it */
+
+  /* ---- The mark ---- */
+  --mark-outline: rgba(245, 244, 239, 0.22); /* the shard's hairline outline */
+  --mark-spark: #F3E8FF;                     /* the point of light that ignites the edge in the splash */
+
+  /* ---- Scenes. Material colours for three.js, tuned to the lighting. Never UI. ---- */
+  --scene-obsidian: #121216;     /* polished obsidian bodies: the stack's slabs, the systems' blocks */
+  --scene-obsidian-dim: #0B0B0D; /* a body that has stepped back */
+  --scene-groove: #3A3A40;       /* an unlit groove that lights to violet-hi */
+  --scene-lamp: #55545A;         /* an unlit lamp that lights to violet */
+  --scene-ember: #B560FF;        /* the orb's emissive veins */
+}

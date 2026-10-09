@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" viewport="1200x1180" subtitle="The nav at the top of the page, scrolled into a pill, and on a phone with its menu open; the footer; the route bar" name="Navigation · Nav, menu, footer, progress" -->
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Navigation · Nav, menu, footer, progress</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.26.4/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.39.0/dist/umd/lucide.min.js"></script>
+<script src="../../_ds_bundle.js" onerror="void 0"></script>
+<script src="../_loader.js"></script>
+<style>body{margin:0;padding:24px;background:var(--obsydian);overflow-x:hidden} .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .col{display:flex;flex-direction:column;gap:20px} .lbl{font:var(--type-label);letter-spacing:var(--type-label-tracking);text-transform:uppercase;color:var(--bone-low);min-width:96px;flex:none} .frame{position:relative;overflow:hidden;border:1px solid var(--hairline)} @media (max-width:699px){.g2{grid-template-columns:minmax(0,1fr)!important}}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+loadDS('../').then((DS) => {
+const { Nav, Footer, RouteProgress, Text } = DS;
+const L = (t) => <span className="lbl">{t}</span>;
+function Demo(){
+  const [a,setA]=React.useState(false);
+  React.useEffect(()=>{const t=setInterval(()=>setA(x=>!x),2600);return()=>clearInterval(t);},[]);
+  const box={position:'relative',height:130,overflow:'hidden',borderBottom:'1px solid var(--hairline)'};
+  return <div style={{margin:-24}}>
+    <div style={box}><RouteProgress active={a} contained/><Nav state="full" layout="desktop" active="Services" contained/></div>
+    <div style={{...box,height:100,background:'radial-gradient(60% 80% at 70% 0%, var(--violet-wash), transparent), var(--obsydian)'}}><Nav state="pill" layout="desktop" contained/></div>
+    <div style={{display:'flex',gap:24,padding:24,flexWrap:'wrap'}}>
+      <div style={{position:'relative',width:390,height:520,overflow:'hidden',border:'1px solid var(--hairline)'}}><Nav layout="phone" contained/></div>
+      <div style={{position:'relative',width:390,height:520,overflow:'hidden',border:'1px solid var(--hairline)'}}><Nav layout="phone" contained menuOpen active="Platforms" onMenu={()=>{}}/></div>
+    </div>
+    <Footer/>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+});
+</script></body></html>
